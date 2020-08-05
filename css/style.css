@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.bg-dark {
+  background: transparent !important;
+  transition: 0.75s ease;
+}
+.bg-dark.scrolled {
+  background: #343a40 !important;
+}
+.navbar-brand {
+  font-family: "Lobster", cursive;
+  font-size: 30px;
+  padding: 0px;
+}
+.nav-link {
+  margin: 0px 15px;
+  font-family: "Roboto", sans-serif;
+}
+
+.site-content {
+  background-image: url("../images/pexels-photo-633409.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+.site-title-desc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.site-title,
+.site-desc {
+  color: #fff;
+  font-family: "Righteous", cursive;
+}
+.site-title {
+  margin: 0 0 6% 0;
+  font-size: 3.5rem;
+}
+.site-desc {
+  font-size: 1.5rem;
+}
+.btn.btn-dark {
+  padding: 6px 0px;
+  font-family: "Righteous", cursive;
+}
+#about-section {
+  min-height: 100vh;
+  padding: 5% 0;
+}
+#about-section > h1 {
+  font-family: "Righteous", cursive;
+  font-size: 3rem;
+  margin-bottom: 2%;
+}
+#about-section > p {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+img[alt="bootstrap"] {
+  width: 160px;
+  transition: all 1s;
+}
+img[alt="bootstrap"]:hover {
+  transform: scale(1.1);
+}
+.skills {
+  border: 1px solid rgba(30, 39, 46, 0.3);
+  box-shadow: 5px 10px 15px 1px rgba(30, 39, 46, 0.5);
+}
+footer {
+  background: black;
+  color: #fff;
+}
+#section-gap {
+  height: 75vh;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 56, 56, 0.3),
+      rgba(23, 192, 235, 0.3)
+    ),
+    url(../images/laptop-1478822_1920.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+#contact-section {
+  min-height: 100vh;
+  height: auto;
+}
+#contact-section h1 {
+  font-family: "Righteous", cursive;
+  font-size: 3rem;
+  margin-bottom: 2%;
+}
+#contact-section p {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.icon {
+  width: 30px;
+}
+.icon:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.copyright-text {
+  font-size: 1.3rem;
+}
+@media (max-width: 580px) {
+  * {
+    overflow-x: hidden;
+  }
+  p,
+  h1 {
+    text-align: center;
+  }
+  .skills {
+    width: 80vw;
+    margin: 0px auto;
+  }
+  .skillsbox {
+    width: 100%;
+    margin: 0px;
+  }
+  .copyright {
+    width: 100vw;
+  }
+}
