@@ -53,6 +53,8 @@ html {
   padding: 6px 0px;
   font-family: "Righteous", cursive;
 }
+
+/* About Section */
 #about-section {
   min-height: 100vh;
   padding: 5% 0;
@@ -77,12 +79,29 @@ img[alt="bootstrap"]:hover {
   border: 1px solid rgba(30, 39, 46, 0.3);
   box-shadow: 5px 10px 15px 1px rgba(30, 39, 46, 0.5);
 }
+
+/* Portfolio Section */
+#portfolio-section {
+  min-height: 100vh;
+  padding: 5% 0;
+}
+#portfolio-section > h1 {
+  font-family: "Righteous", cursive;
+  font-size: 3rem;
+  margin-bottom: 2%;
+}
+#portfolio-section > p {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Footer Section */
 footer {
   background: black;
   color: #fff;
 }
-#section-gap {
-  height: 75vh;
+.section-gap {
+  height: 70vh;
 
   background-image: linear-gradient(
       to right,
@@ -93,6 +112,8 @@ footer {
   background-attachment: fixed;
   background-size: cover;
 }
+
+/* Contact Section */
 #contact-section {
   min-height: 100vh;
   height: auto;
