@@ -4,7 +4,7 @@
 <br />
 <br />
 	<samp>
-	I am <b>Christopher</b>, a passionate full-stack web & mobile application developer from United States. <br/>
+	I am <b>Abid Ali</b>, a passionate full-stack web & mobile application developer from Pakistan. <br/>
   &nbsp; • Ability to translate business requirements into technical solutions.<br />
   &nbsp; • Strong analytical and organizational attributes.<br />
   &nbsp; • A proven creative problem solver that achieves organizational goals and customer expectations.<br />
