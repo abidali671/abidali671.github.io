@@ -159,48 +159,6 @@
   </tbody>
 </table>
 
-<h2> Blockchain & Cryptocurrency </h2>
-
-<table>
-  <thead align="center">
-    <tr border: none;>
-      <td><b>Aspects </b></td>
-      <td><b>Technologies</b></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://www.investopedia.com/terms/b/blockchain.asp" rel="nofollow"><b>🔗 Chains</b></a></td>
-      <td>
-	      <a href="https://ethereum.org/en/" rel="nofollow">
-        <img alt="Ethereum" src="https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white" data-canonical-src="https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white" style="max-width: 100%;"/></a>
-        <a href="https://polygon.technology/" rel="nofollow">
-        <img alt="Bitcoin" src="https://img.shields.io/badge/Bitcoin-000?style=for-the-badge&logo=bitcoin&logoColor=white" data-canonical-src="https://img.shields.io/badge/Bitcoin-000?style=for-the-badge&logo=bitcoin&logoColor=white" style="max-width: 100%;"/></a>
-        <a href="https://polygon.technology/" rel="nofollow">
-        <img alt="Bitcoin Cash" src="https://img.shields.io/badge/Bitcoin%20Cash-0AC18E?style=for-the-badge&logo=Bitcoin%20Cash&logoColor=white" data-canonical-src="https://img.shields.io/badge/Bitcoin%20Cash-0AC18E?style=for-the-badge&logo=Bitcoin%20Cash&logoColor=white" style="max-width: 100%;"/></a>
-        <a href="https://polygon.technology/" rel="nofollow">
-        <img alt="Bitcoin SV" src="https://img.shields.io/badge/Bitcoin%20SV-EAB300?style=for-the-badge&logo=Bitcoin%20SV&logoColor=white" data-canonical-src="https://img.shields.io/badge/Bitcoin%20SV-EAB300?style=for-the-badge&logo=Bitcoin%20SV&logoColor=white" style="max-width: 100%;"/></a>
-        <a href="https://polygon.technology/" rel="nofollow">
-        <img alt="Dash" src="https://img.shields.io/badge/dash-008DE4?style=for-the-badge&logo=dash&logoColor=white" data-canonical-src="https://img.shields.io/badge/dash-008DE4?style=for-the-badge&logo=dash&logoColor=white" style="max-width: 100%;"/></a>
-      </td>
-    </tr>
-	  <tr>
-      <td><a href="https://www.techopedia.com/definition/29568/back-end-developer#:~:text=A%20back%2Dend%20developer%20is,front%2Dend%20application%20or%20system." rel="nofollow"><b>Languages &amp; Tools</b></a></td>
-      <td>
-	      <a href="https://docs.soliditylang.org/en/v0.8.14/" rel="nofollow">
-        <img alt="Web3" src="https://img.shields.io/badge/web3.js-F16822?style=for-the-badge&logo=web3.js&logoColor=white" data-canonical-src="https://img.shields.io/badge/web3.js-F16822?style=for-the-badge&logo=web3.js&logoColor=white" style="max-width: 100%;"/></a>
-	      <a href="https://docs.soliditylang.org/en/v0.8.14/" rel="nofollow">
-        <img alt="Solidity" src="https://img.shields.io/badge/Solidity-e6e6e6?style=for-the-badge&logo=solidity&logoColor=black" data-canonical-src="https://img.shields.io/badge/Solidity-e6e6e6?style=for-the-badge&logo=solidity&logoColor=black" style="max-width: 100%;"/></a>
-	      <a href="https://docs.soliditylang.org/en/v0.8.14/" rel="nofollow">
-        <img alt="Remix" src="https://img.shields.io/badge/-REMIX-007aa6?style=for-the-badge" data-canonical-src="https://img.shields.io/badge/-REMIX-007aa6?style=for-the-badge" style="max-width: 100%;"/></a>
-	      <a href="https://trufflesuite.com/ganache/" rel="nofollow">
-        <img alt="Ganache" src="https://img.shields.io/badge/-GANACHE-e4a663?style=for-the-badge" data-canonical-src="https://img.shields.io/badge/-GANACHE-e4a663?style=for-the-badge" style="max-width: 100%;"/></a>
-	      <a href="https://metamask.io/" rel="nofollow"><img alt="Metamask" src="https://img.shields.io/badge/-METAMASK-f5841f?style=for-the-badge" data-canonical-src="https://img.shields.io/badge/-METAMASK-f5841f?style=for-the-badge" style="max-width: 100%;"/></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 ---
 ## :zap: GitHub Stats
 
