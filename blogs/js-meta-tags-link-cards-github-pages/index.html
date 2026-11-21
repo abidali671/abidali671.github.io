@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why Meta Tags Added by JavaScript Don&#x27;t Show in Link Cards: Fixing a Static Page on GitHub Pages | Abid Ali</title>
+  <meta name="description" content="Share tags set by JavaScript are visible in your browser but often invisible to link preview crawlers. A tested script shows the difference and the fix.">
+  <meta name="author" content="Abid Ali">
+  <link rel="canonical" href="https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Abid Ali">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Why Meta Tags Added by JavaScript Don&#x27;t Show in Link Cards: Fixing a Static Page on GitHub Pages">
+  <meta property="og:description" content="Share tags set by JavaScript are visible in your browser but often invisible to link preview crawlers. A tested script shows the difference and the fix.">
+  <meta property="og:url" content="https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/">
+  <meta property="og:image" content="https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Why JavaScript Meta Tags Don&#x27;t Show in Cards">
+  <meta property="article:published_time" content="2026-11-21">
+  <meta property="article:author" content="https://www.abid-ali.dev/">
+  <meta property="article:tag" content="GitHub Pages">
+  <meta property="article:tag" content="JavaScript">
+  <meta property="article:tag" content="Meta Tags">
+  <meta property="article:tag" content="Link Previews">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why Meta Tags Added by JavaScript Don&#x27;t Show in Link Cards: Fixing a Static Page on GitHub Pages">
+  <meta name="twitter:description" content="Share tags set by JavaScript are visible in your browser but often invisible to link preview crawlers. A tested script shows the difference and the fix.">
+  <meta name="twitter:image" content="https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/cover.png">
+  <meta name="twitter:image:alt" content="Why JavaScript Meta Tags Don&#x27;t Show in Cards">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Meta Tags Added by JavaScript Don't Show in Link Cards: Fixing a Static Page on GitHub Pages",
+  "description": "Share tags set by JavaScript are visible in your browser but often invisible to link preview crawlers. A tested script shows the difference and the fix.",
+  "image": "https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/cover.png",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/"
+  },
+  "url": "https://abidali671.github.io/blogs/js-meta-tags-link-cards-github-pages/",
+  "keywords": "GitHub Pages, JavaScript, Meta Tags, Link Previews",
+  "wordCount": 1271,
+  "author": {
+    "@type": "Person",
+    "name": "Abid Ali",
+    "url": "https://www.abid-ali.dev/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Abid Ali",
+    "url": "https://www.abid-ali.dev/"
+  }
+}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="wrap nav"><a class="brand" href="https://www.abid-ali.dev/">Abid Ali</a><a href="/blogs/">&larr; All posts</a></nav>
+  </header>
+  <main class="wrap">
+    <article class="post">
+      <img class="cover" src="./cover.png" alt="Why JavaScript Meta Tags Don&#x27;t Show in Cards" width="1200" height="630">
+      <h1>Why Meta Tags Added by JavaScript Don&#x27;t Show in Link Cards: Fixing a Static Page on GitHub Pages</h1>
+      <p class="byline">By <a href="https://www.abid-ali.dev/">Abid Ali, freelance full-stack developer</a> &middot; <time datetime="2026-11-21">November 21, 2026</time></p>
+      <ul class="tags" aria-label="Tags">
+      <li class="tag">GitHub Pages</li>
+      <li class="tag">JavaScript</li>
+      <li class="tag">Meta Tags</li>
+      <li class="tag">Link Previews</li>
+      </ul>
+      <div class="content">
+<p>You build a small page for GitHub Pages and add a few lines of JavaScript that set the title, description and picture for sharing. You open the page in your browser, inspect the head, and everything is there. Then you paste the link into a chat and the card is empty. The page works. The card does not know about it.</p>
+
+<p>This post explains why that happens, shows it with a small tested script, and gives the fix for a plain static page. It applies to any page where share tags are added in the browser, whether by a hand-written script or by a single-page app that has not been set up to produce HTML in advance.</p>
+
+<h2>Two ways of reading the same page</h2>
+
+<p>A browser downloads the HTML, runs the JavaScript, and shows you the result. What you see in the developer tools is the page after the scripts have run. A link preview crawler works differently. Most of them download the HTML, read the tags in the head, and stop. They do not run your scripts. The <a href="https://www.ogscope.pk/guides/javascript-meta-tags-not-showing" target="_blank" rel="noopener">guide to meta tags that do not show up</a> describes this behaviour in more detail, including which crawlers are more patient than others. The safest assumption for a small site is that the crawler sees only the HTML your server sends.</p>
+
+<p>That is why checking in the browser proves nothing about the card. The element inspector shows the finished page. The crawler gets the raw file.</p>
+
+<h2>A small example that fails</h2>
+
+<p>Here is the smallest version of the mistake. The page has no share tags in its HTML. A script, loaded with <code>defer</code>, creates them after the page loads.</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Notes&lt;/title&gt;
+  &lt;script src="meta.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Notes&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<pre><code>// Sets share tags in the browser after the page loads. Browsers see them; most link-preview crawlers never run this.
+const tags = {
+  "og:title": "Notes on small sites",
+  "og:description": "Short, tested write-ups.",
+  "og:image": "https://example.github.io/cover.png",
+};
+for (const [property, content] of Object.entries(tags)) {
+  const m = document.createElement("meta");
+  m.setAttribute("property", property);
+  m.content = content;
+  document.head.appendChild(m);
+}</code></pre>
+
+<p>In a browser this works. Every tag is created. To see what a crawler sees, I wrote a script that reads the same file twice: once without running scripts, and once the way a browser would, with scripts on. It uses jsdom, a DOM for Node, and compares the <code>og:</code> tags in each version.</p>
+
+<pre><code>// compare-raw-vs-dom.mjs &lt;dir&gt; : read &lt;dir&gt;/index.html as a crawler would (no JavaScript), then as a browser would (JavaScript on).
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import jsdom from "jsdom";
+const { JSDOM } = jsdom;
+
+export function ogTags(doc) {
+  return Object.fromEntries([...doc.querySelectorAll('meta[property^="og:"]')].map((m) =&gt; [m.getAttribute("property"), m.getAttribute("content")]));
+}
+
+export async function compare(dir) {
+  const file = resolve(dir, "index.html");
+  const html = readFileSync(file, "utf8");
+  const raw = ogTags(new JSDOM(html).window.document);                       // scripts are not run
+  const dom = new JSDOM(html, { url: "file://" + file, runScripts: "dangerously", resources: "usable" });
+  await new Promise((r) =&gt; dom.window.addEventListener("load", r));
+  const rendered = ogTags(dom.window.document);
+  const missing = Object.keys(rendered).filter((k) =&gt; !(k in raw));
+  return { raw, rendered, missing };
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const r = await compare(process.argv[2] ?? ".");
+  console.log("Raw HTML (what most crawlers read):", Object.keys(r.raw).length ? r.raw : "no og: tags");
+  console.log("After JavaScript (what a browser shows):", r.rendered);
+  console.log(r.missing.length ? `FAIL: ${r.missing.join(", ")} only exist after JavaScript runs` : "OK: every og: tag is already in the raw HTML");
+  process.exitCode = r.missing.length ? 1 : 0;
+}</code></pre>
+
+<p>Running it on the page above gives this:</p>
+
+<pre><code>Raw HTML (what most crawlers read): no og: tags
+After JavaScript (what a browser shows): {
+  'og:title': 'Notes on small sites',
+  'og:description': 'Short, tested write-ups.',
+  'og:image': 'https://example.github.io/cover.png'
+}
+FAIL: og:title, og:description, og:image only exist after JavaScript runs</code></pre>
+
+<p>The raw HTML has no <code>og:</code> tags at all. After JavaScript there are three. The script exits with an error code so you can use it as a check before you push. The same comparison is useful for a page built by a framework: if the tags only exist in the second list, you have this problem.</p>
+
+<h2>The fix: write the tags into the HTML</h2>
+
+<p>The cure is boring and it works. Put the tags in the file. For a static page that means writing them in the head:</p>
+
+<pre><code>&lt;meta property="og:title" content="Notes on small sites"&gt;
+&lt;meta property="og:description" content="Short, tested write-ups."&gt;
+&lt;meta property="og:image" content="https://example.github.io/cover.png"&gt;</code></pre>
+
+<p>Run the same script on the fixed page:</p>
+
+<pre><code>Raw HTML (what most crawlers read): {
+  'og:title': 'Notes on small sites',
+  'og:description': 'Short, tested write-ups.',
+  'og:image': 'https://example.github.io/cover.png'
+}
+After JavaScript (what a browser shows): {
+  'og:title': 'Notes on small sites',
+  'og:description': 'Short, tested write-ups.',
+  'og:image': 'https://example.github.io/cover.png'
+}
+OK: every og: tag is already in the raw HTML</code></pre>
+
+<p>Now both lists are the same. The browser sees the tags and so does the crawler.</p>
+
+<h2>If you have many pages</h2>
+
+<p>Writing the tags by hand for ten pages is fine. For fifty it is a chore, and a typo in one of them is easy to miss. There are two common ways out, both of which end with real tags in real HTML.</p>
+
+<ul>
+<li><strong>A small build step.</strong> A script reads a list of pages and writes each HTML file with its own tags filled in from a template. The output is committed, and GitHub Pages serves the files as they are.</li>
+<li><strong>A static site generator.</strong> Jekyll, which GitHub Pages builds for you, and other generators write tags at build time, so the result is real HTML. If you use a generator, check its output rather than the source, because a theme may set the tags to something you did not expect.</li>
+</ul>
+
+<p>A single-page app on GitHub Pages has the same problem: unless the build pre-renders pages, every route returns the same HTML shell, and every shared link gets the same card.</p>
+
+<h2>Tests for the checker</h2>
+
+<p>The comparison script has three tests: tags written in the HTML are visible without JavaScript, tags added by a script exist only after it runs, and a tag that a script only overwrites is not reported as missing. They run with <code>node --test</code>:</p>
+
+<pre><code>✔ tags written in the HTML are visible without JavaScript (89.456802ms)
+✔ tags added by a script exist only after it runs (19.740153ms)
+✔ a tag in the HTML that a script only overwrites is not reported missing (16.760953ms)
+ℹ tests 3
+ℹ pass 3
+ℹ fail 0</code></pre>
+
+<p>The third test came from a mistake of my own. A page can have the tag in HTML and a script that edits its content. In that case the crawler sees the original value, not the edited one. The checker reports that as fine, because the tag exists, but it also keeps both values so you can see the difference.</p>
+
+<h2>Check the published page, not only your copy</h2>
+
+<p>After you push, wait for GitHub Pages to publish. Then paste the live address into a <a href="https://www.ogscope.pk/tools/meta-tag-checker" target="_blank" rel="noopener">meta tag checker</a>, which reads the tags in the HTML the server sends. If the tags you expect are not listed, you have the problem described above. For the finished card, an <a href="https://www.ogscope.pk/tools/open-graph-checker" target="_blank" rel="noopener">Open Graph checker</a> shows the title, description and picture a chat app will build.</p>
+
+<p>If a chat app still shows an old card, do not change anything. It has a saved copy. Try a different page of the same site, or wait a day.</p>
+
+<h2>Summary</h2>
+
+<ul>
+<li>The inspector shows the page after JavaScript. A crawler usually does not run it.</li>
+<li>Compare the raw HTML with the rendered page to find tags that only exist after scripts run.</li>
+<li>Write share tags into the HTML itself, by hand, with a template or with a generator.</li>
+<li>Check the live page with a tool that reads the server's HTML.</li>
+</ul>
+
+<p>The fix takes minutes. Finding it takes longer when the page works perfectly in your own browser.</p>
+      </div>
+      <footer class="post-footer">
+        <p class="author-note">Written by <a href="https://www.abid-ali.dev/">Abid Ali, freelance full-stack developer</a> based in Karachi, building websites and web apps for clients.</p>
+        <p><a href="/blogs/">&larr; Back to all posts</a></p>
+      </footer>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="wrap"><a href="https://www.abid-ali.dev/">Portfolio</a> &middot; <a href="/blogs/">Blog</a></div></footer>
+</body>
+</html>
