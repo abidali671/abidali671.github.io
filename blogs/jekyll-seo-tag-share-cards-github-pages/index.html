@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share Cards on a Jekyll Site on GitHub Pages: One Front Matter Field With jekyll-seo-tag and a Check Before You Push | Abid Ali</title>
+  <meta name="description" content="Tested with Jekyll 4.4.1: what jekyll-seo-tag writes on its own, the one image field that gives posts a wide share card, and three mistakes that break it.">
+  <meta name="author" content="Abid Ali">
+  <link rel="canonical" href="https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Abid Ali">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Share Cards on a Jekyll Site on GitHub Pages: One Front Matter Field With jekyll-seo-tag and a Check Before You Push">
+  <meta property="og:description" content="Tested with Jekyll 4.4.1: what jekyll-seo-tag writes on its own, the one image field that gives posts a wide share card, and three mistakes that break it.">
+  <meta property="og:url" content="https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/">
+  <meta property="og:image" content="https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Share Cards on a Jekyll Site With jekyll-seo-tag">
+  <meta property="article:published_time" content="2026-11-21">
+  <meta property="article:author" content="https://www.abid-ali.dev/">
+  <meta property="article:tag" content="GitHub Pages">
+  <meta property="article:tag" content="Jekyll">
+  <meta property="article:tag" content="jekyll-seo-tag">
+  <meta property="article:tag" content="Link Previews">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Share Cards on a Jekyll Site on GitHub Pages: One Front Matter Field With jekyll-seo-tag and a Check Before You Push">
+  <meta name="twitter:description" content="Tested with Jekyll 4.4.1: what jekyll-seo-tag writes on its own, the one image field that gives posts a wide share card, and three mistakes that break it.">
+  <meta name="twitter:image" content="https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/cover.png">
+  <meta name="twitter:image:alt" content="Share Cards on a Jekyll Site With jekyll-seo-tag">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Share Cards on a Jekyll Site on GitHub Pages: One Front Matter Field With jekyll-seo-tag and a Check Before You Push",
+  "description": "Tested with Jekyll 4.4.1: what jekyll-seo-tag writes on its own, the one image field that gives posts a wide share card, and three mistakes that break it.",
+  "image": "https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/cover.png",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/"
+  },
+  "url": "https://abidali671.github.io/blogs/jekyll-seo-tag-share-cards-github-pages/",
+  "keywords": "GitHub Pages, Jekyll, jekyll-seo-tag, Link Previews",
+  "wordCount": 1128,
+  "author": {
+    "@type": "Person",
+    "name": "Abid Ali",
+    "url": "https://www.abid-ali.dev/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Abid Ali",
+    "url": "https://www.abid-ali.dev/"
+  }
+}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="wrap nav"><a class="brand" href="https://www.abid-ali.dev/">Abid Ali</a><a href="/blogs/">&larr; All posts</a></nav>
+  </header>
+  <main class="wrap">
+    <article class="post">
+      <img class="cover" src="./cover.png" alt="Share Cards on a Jekyll Site With jekyll-seo-tag" width="1200" height="630">
+      <h1>Share Cards on a Jekyll Site on GitHub Pages: One Front Matter Field With jekyll-seo-tag and a Check Before You Push</h1>
+      <p class="byline">By <a href="https://www.abid-ali.dev/">Abid Ali, freelance full-stack developer</a> &middot; <time datetime="2026-11-21">November 21, 2026</time></p>
+      <ul class="tags" aria-label="Tags">
+      <li class="tag">GitHub Pages</li>
+      <li class="tag">Jekyll</li>
+      <li class="tag">jekyll-seo-tag</li>
+      <li class="tag">Link Previews</li>
+      </ul>
+      <div class="content">
+<p>If your GitHub Pages site is built with Jekyll, you already have most of what you need to make every post look good when its link is shared. A single plugin called <code>jekyll-seo-tag</code> writes the title, description, canonical address and share image tags for each page. What it cannot do is decide which picture goes with which post, or notice when you forgot to give it the information it needs.</p>
+
+<p>I set up a small test site with that plugin, built it locally with Jekyll 4.4.1 and jekyll-seo-tag 2.9.1, and read the head of each generated page. This post is what I learned: what the plugin writes on its own, the one front matter field that adds the picture, three small mistakes that produce a broken card, and a check to run before you push.</p>
+
+<h2>Switching the plugin on</h2>
+
+<p>The plugin is one of those GitHub Pages supports out of the box. You enable it in two places. First in <code>_config.yml</code>:</p>
+
+<pre><code>url: "https://yourname.github.io"
+title: Notes by Abid
+description: Short notes on small websites.
+plugins:
+  - jekyll-seo-tag</code></pre>
+
+<p>Then in your layout, inside the <code>head</code> element, add one tag:</p>
+
+<pre><code>{% seo %}</code></pre>
+
+<p>That is all. It replaces the hand-written title and meta tags you may have in the layout, so remove those to avoid writing the same thing twice.</p>
+
+<h2>What it writes without any help</h2>
+
+<p>For a post with a title and a description in its front matter, the plugin produced these tags in my test build (shortened to the ones that matter):</p>
+
+<pre><code>&lt;meta property="og:title" content="A post with its own card" /&gt;
+&lt;meta name="description" content="A short description written for the card." /&gt;
+&lt;link rel="canonical" href="https://example.github.io/notes/2026/11/20/first-post.html" /&gt;
+&lt;meta property="og:url" content="https://example.github.io/notes/2026/11/20/first-post.html" /&gt;
+&lt;meta property="og:site_name" content="Notes by Abid" /&gt;
+&lt;meta property="og:type" content="article" /&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;</code></pre>
+
+<p>Notice that the canonical address and <code>og:url</code> match, and both are absolute, built from the <code>url</code> and <code>baseurl</code> settings plus the post's path. Posts get <code>og:type</code> set to <code>article</code> and, in my build, also <code>article:published_time</code> and <code>article:modified_time</code> taken from the date in the file name.</p>
+
+<p>If a post has no <code>description</code>, the plugin used the start of the post's text. That is better than nothing, but the first sentence of a post is often an opening line rather than a summary, so writing a description yourself is worth the thirty seconds.</p>
+
+<h2>The one field that adds the picture</h2>
+
+<p>A page with no image gets no <code>og:image</code> tag at all, and the plugin then sets <code>twitter:card</code> to <code>summary</code>, which is the small-thumbnail style. In my test, the second post without an image came out exactly like that. To get a wide card, add <code>image</code> to the post's front matter:</p>
+
+<pre><code>---
+layout: default
+title: "A post with its own card"
+description: "A short description written for the card."
+image: /assets/card-first.png
+---</code></pre>
+
+<p>With that single line the build wrote an absolute <code>og:image</code>, matching <code>twitter:image</code>, and switched <code>twitter:card</code> to <code>summary_large_image</code>:</p>
+
+<pre><code>&lt;meta property="og:image" content="https://example.github.io/notes/assets/card-first.png" /&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;meta name="twitter:image" content="https://example.github.io/notes/assets/card-first.png" /&gt;</code></pre>
+
+<p>You write a path; the plugin turns it into a full address. The path starts at the root of the site, and the <code>baseurl</code> is added for you.</p>
+
+<h3>Size and alt text</h3>
+
+<p>The field also accepts an object, which lets you add dimensions and alt text. My third test post used this form:</p>
+
+<pre><code>image:
+  path: /assets/card-first.png
+  width: 1200
+  height: 630
+  alt: "Blue rectangle used as a test card"</code></pre>
+
+<p>The result included <code>og:image:width</code>, <code>og:image:height</code>, <code>og:image:alt</code> and <code>twitter:image:alt</code>. Alt text on the card image costs one line and helps anyone using a screen reader, so I recommend it.</p>
+
+<h3>A default image for the whole site</h3>
+
+<p>If most pages should share one picture, put it in <code>defaults</code> in <code>_config.yml</code>, and override it per post when a post has its own:</p>
+
+<pre><code>defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/card-first.png</code></pre>
+
+<p>In my test, even the home page and the post with no image of its own then received a large card with that picture. Pages with their own <code>image</code> keep it.</p>
+
+<h2>Three mistakes that break the card</h2>
+
+<h3>1. No <code>url</code> in the configuration</h3>
+
+<p>This was the most useful thing I found. I removed the <code>url</code> line from <code>_config.yml</code> and rebuilt locally. The page no longer had a canonical link or an <code>og:url</code> line, and <code>og:image</code> became a path only:</p>
+
+<pre><code>&lt;meta property="og:image" content="/notes/assets/card-first.png" /&gt;</code></pre>
+
+<p>A path without a domain is the classic reason a card shows no picture, because the app that reads the page has no idea which site it belongs to. On GitHub Pages the address is often filled in for you from the repository settings, so you may never see this online. I would still set <code>url</code> explicitly, so the result does not depend on where the site is built. The <a href="https://www.ogscope.pk/guides/og-image-not-showing" target="_blank" rel="noopener">guide to missing og:image pictures</a> lists this and the other usual causes.</p>
+
+<h3>2. A forgotten image on the posts that matter</h3>
+
+<p>Without an <code>image</code>, a post gets the small <code>summary</code> card. The plugin does not warn you, and the page looks perfectly fine in your browser. Add the field to the posts you expect to be shared, or set a default. The note on <a href="https://www.ogscope.pk/guides/missing-twitter-card" target="_blank" rel="noopener">missing Twitter Card tags</a> explains the difference between the two card types.</p>
+
+<h3>3. A future date in the file name</h3>
+
+<p>Jekyll skips posts dated in the future when it builds. While testing I created a post one day ahead, and the build printed "Skipping: ... has a future date" and generated no page. On a site you update from several machines, a mismatch in the clock or the time zone can make a post disappear from the site until its date arrives. If a new post does not show up, check the date first.</p>
+
+<h2>Check before you push</h2>
+
+<p>The plugin makes the tags, but it cannot tell you whether they say what you meant. After building, open the generated file and look at the head of one new post. You are looking for five things: an absolute <code>og:image</code>, a canonical address that matches <code>og:url</code>, a description that reads like a sentence, <code>twitter:card</code> set to <code>summary_large_image</code>, and no leftover duplicate tags from the layout.</p>
+
+<p>After you push and the site is live, paste the post address into a <a href="https://www.ogscope.pk/tools/meta-tag-checker" target="_blank" rel="noopener">meta tag checker</a> to see the same information from the outside. If the live result differs from your local build, the usual cause is a different <code>url</code> or <code>baseurl</code>.</p>
+
+<h2>A short checklist</h2>
+
+<ul>
+<li>Enable <code>jekyll-seo-tag</code> and add <code>{% seo %}</code> to the head of your layout.</li>
+<li>Set <code>url</code> and <code>baseurl</code> in <code>_config.yml</code>.</li>
+<li>Give every shareable post a <code>description</code> and an <code>image</code>.</li>
+<li>Use the object form of <code>image</code> when you want size and alt text.</li>
+<li>Set a default image for pages that have none.</li>
+<li>Remove hand-written share tags from the layout so nothing appears twice.</li>
+<li>Read the built HTML before you push, then check the live address once.</li>
+</ul>
+
+<p>The plugin does the repetitive part well. Your part is small and specific: a good description, a wide picture and a correct site address. Do those three and every post you publish will arrive in a chat looking like you meant it to.</p>
+      </div>
+      <footer class="post-footer">
+        <p class="author-note">Written by <a href="https://www.abid-ali.dev/">Abid Ali, freelance full-stack developer</a> based in Karachi, building websites and web apps for clients.</p>
+        <p><a href="/blogs/">&larr; Back to all posts</a></p>
+      </footer>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="wrap"><a href="https://www.abid-ali.dev/">Portfolio</a> &middot; <a href="/blogs/">Blog</a></div></footer>
+</body>
+</html>
